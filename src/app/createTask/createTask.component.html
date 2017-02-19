@@ -1,0 +1,24 @@
+<h1> create Task here</h1><br>
+<form class="container">
+  <label>id </label>
+  <input type="number" required #id
+         [(ngModel)]="task.taskId"  name="taskId" placeholder="taskId">
+  <label>date</label>
+  <input type="date" [(ngModel)]="task.taskDate" name="date">
+  <label> Title</label>
+  <input type="text" [(ngModel)]="task.taskTitle" name="taskTitle" placeholder="TaskTitle">
+  <label>task Description</label>
+  <input type="text" [(ngModel)]="task.taskDescription"  name="taskDescription" placeholder="Description">
+  <label>priority</label>
+  <select name="drop" required #dropDown
+          [(ngModel)]="task.taskPriority" class="selectpicker">
+    <option value="" disabled selected>Select your Priority</option>
+    <option value="low">Low</option>
+    <option value="medium">Medium</option>
+    <option value="high">High</option>
+  </select>
+  <input  type="button" style="margin-left: 4em"
+         (click)="addTask()" value="Add"/>
+
+
+</form>

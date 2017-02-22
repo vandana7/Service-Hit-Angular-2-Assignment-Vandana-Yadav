@@ -4,8 +4,9 @@ import {Router} from "@angular/router";
 import {Task} from '../task'
 
 @Component({
+  moduleId:module.id,
   selector :'ShowTask',
-  templateUrl: './app/showTask/showTask.component.html'
+  templateUrl: './showTask.component.html'
 })
 
 export class ShowTaskComponent implements OnInit {
@@ -16,16 +17,39 @@ export class ShowTaskComponent implements OnInit {
   newTask: Task[];
 
   ngOnInit() {
-    this.newTask = this.service.taskArray;
+   // this.newTask = this.service.taskArray;
+    this.service.getData3().subscribe(data =>  {
+      //alert(JSON.stringify(data))
+      this.newTask=data
+
+    }, err => {
+      alert(err)
+    });
+    //this.service.getData1().then(data =>  {
+    //   alert(JSON.stringify(data))
+    //
+    // }, err => {
+    //   alert(err)
+    // this.service.getData3().subscribe(data =>  {
+    //     alert(JSON.stringify(data))
+    //
+    //    }, err => {
+    //      alert(err)
+    // });
+    //this.service.getData3().subscribe((data:any)=>alert(JSON.stringify(data)))
+
   }
 
+
+
   deleteByIndex(index: number) {
-    this.service.delete(index)
-    alert('Task Removed')
+    //this.service.delete(index)
+    this.service.remove(this.newTask[index]._id).subscribe((data:any)=>alert(JSON.stringify(data)))
   }
 
 
   editTask(index: number) {
-    this.router.navigate(['CreateTask',index])
+    this.router.navigate(['CreateTask',this.newTask[index]._id])
   }
+
 }

@@ -1,26 +1,26 @@
 export class Task {
-  taskId: number;
-  taskDate: string
-  taskTitle: string;
-  taskDescription: string;
-  taskPriority: string;
+  _id: string;
+  date: string;
+  title: string;
+  description: string;
+  priority: string;
 
-  constructor( taskId?: number,taskDate?: string,  taskTitle?: string, taskDescription?: string, taskPriority?: string) {
+  constructor( taskId?: string,taskDate?: string,  taskTitle?: string, taskDescription?: string, taskPriority?: string) {
 
     if (taskId && taskDate && taskTitle && taskDescription && taskPriority) {
-      this.taskId = taskId
-      this.taskDate = taskDate;
-      this.taskTitle = taskTitle;
-      this.taskDescription = taskDescription;
-      this.taskPriority = taskPriority;
+      this._id = taskId;
+      this.date = taskDate;
+      this.title = taskTitle;
+      this.description = taskDescription;
+      this.priority = taskPriority;
     }
 
     else {
-      this.taskId=null;
-      this.taskDate = '';
-      this.taskTitle = '';
-      this.taskDescription = '';
-      this.taskPriority = '';
+      this._id='';
+      this.date = '';
+      this.title = '';
+      this.description = '';
+      this.priority = '';
 
     }
 
